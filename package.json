@@ -1,41 +1,48 @@
 {
-  "name": "@oss-ai/prompt-vcs",
-  "version": "0.1.0",
-  "description": "Git-like version control for prompt engineering",
+  "name": "prompt-vcs",
+  "version": "0.2.0",
+  "description": "Git-style version control for LLM prompts with A/B testing",
+  "type": "module",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "bin": {
-    "prompt-vcs": "dist/cli.js",
-    "pvc": "dist/cli.js"
+    "pvc": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "test": "jest",
-    "lint": "eslint src/**/*.ts"
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc --noEmit"
   },
   "keywords": [
     "prompt",
-    "version-control",
-    "llm",
-    "ai",
+    "vcs",
     "git",
-    "prompt-engineering"
+    "llm",
+    "version-control"
   ],
+  "author": "",
   "license": "MIT",
   "dependencies": {
-    "commander": "^11.0.0",
-    "chalk": "^5.3.0",
-    "ora": "^7.0.0",
-    "diff": "^5.1.0",
-    "yaml": "^2.3.0"
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "csv-parse": "^6.1.0",
+    "diff": "^5.2.0",
+    "openai": "^6.22.0",
+    "p-limit": "^3.1.0",
+    "simple-statistics": "^7.8.8",
+    "tiktoken": "^1.0.22"
   },
   "devDependencies": {
-    "@types/diff": "^5.0.0",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^20.0.0",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.0"
+    "@types/diff": "^5.2.1",
+    "@types/node": "^20.14.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
